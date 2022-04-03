@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #111;
+}
+
+.active {
+  background-color: #04AA6D;
+}
+</style>
+</head>
+<h2><center>ADMIN DASHBOARD</center></h2>
+<body>
+
+<ul>
+  <li><a href="/adminhome">Home</a></li>
+  <li><a href="/createuser">New Registration</a></li>
+  <li style="float:right"><a class="active" href="{% url 'logout' %}">LogOut</a></li>
+</ul>
+
+<div>
+    <table border="1">
+        <thead>
+            <tr>
+                <td>Sl No</td>
+                <td>First Name</td>
+                <td>Last Name</td>
+                <td>Email</td>
+                <td>Phone</td>
+                <td>Action</td>
+            </tr>
+        </thead>
+        {% for k in data %}
+        <tbody>
+<tr>
+    <td>{{forloop.counter}}</td>
+                <td>{{ k.firstName }}</td>
+                <td>{{ k.lastName }}</td>
+                <td>{{ k.email }}</td>
+                <td>{{ k.phonenumber }}</td>
+                <td> 
+                    <a href="{% url 'delete-stud' k.user.id %}">DELETE</a>
+                    <a href="{% url 'update-stud' k.user.id %}">UPDATE</a>
+                </td>
+</tr>
+        </tbody>
+        {% endfor %}
+    </table>
+</div>
+</body>
+</html>
+
+

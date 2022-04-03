@@ -7,6 +7,7 @@ class studentDetails(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     firstName = models.TextField(max_length=200)
     lastName = models.TextField(max_length=200)
+    phonenumber = models.TextField(max_length=200,default=None)
     email = models.EmailField(max_length = 254)
     addressOne = models.TextField(max_length=500)
     addressTwo = models.TextField(max_length=500)

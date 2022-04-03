@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        li {
+            float: left;
+        }
+
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        li a:hover:not(.active) {
+            background-color: #111;
+        }
+
+        .active {
+            background-color: #04AA6D;
+        }
+
+        /* Full-width input fields */
+        input[type=text],
+        input[type=email],
+        input[type=password] {
+            width: 100%;
+            padding: 15px;
+            margin: 5px 0 22px 0;
+            display: inline-block;
+            border: none;
+            background: #f1f1f1;
+        }
+
+        input[type=text]:focus,
+        input[type=email]:focus,
+        input[type=password]:focus {
+            background-color: #ddd;
+            outline: none;
+        }
+
+        /* Overwrite default styles of hr */
+        hr {
+            border: 1px solid #f1f1f1;
+            margin-bottom: 25px;
+        }
+
+        /* Set a style for the submit button */
+        .registerbtn {
+            background-color: #04AA6D;
+            color: white;
+            padding: 16px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            opacity: 0.9;
+        }
+
+        .registerbtn:hover {
+            opacity: 1;
+        }
+
+        /* Add a blue text color to links */
+        a {
+            color: dodgerblue;
+        }
+
+        /* Set a grey background color and center the text of the "sign in" section */
+        .signin {
+            background-color: #f1f1f1;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<ul>
+    <li style="float:right"><a class="active" href="{% url 'logout' %}">LogOut</a></li>
+  </ul>
+<h2>
+    <center>Edit User Profile</center>
+</h2>
+
+<body>
+    <form action="/update_stud_details/{{data.user.id}}" method="post">
+        {% csrf_token %}
+        <label for="id_firstName">Firstname:</label>
+        <input type="text" name="firstName" maxlength="200" value={{data.firstName}} required="" id="id_firstName">
+        <label for="id_lastName">Lastname:</label>
+        <input type="text" name="lastName" maxlength="200"  value={{data.lastName}}  required="" id="id_lastName">
+        <label for="id_phonenumber">Phonenumber:</label>
+        <input type="text" name="phonenumber" maxlength="200" value={{data.phonenumber}}  required="" id="id_phonenumber">
+        <label for="id_email">Email:</label>
+        <input type="email" name="email" maxlength="254" value={{data.email}}  required="" id="id_email">
+        <label for="id_addressOne">Address 1:</label>
+        <input type="text" name="addressOne" maxlength="500" value={{data.addressOne}}  required="" id="id_addressOne">
+        <label for="id_addressTwo">Address 2:</label>
+        <input type="text" name="addressTwo" maxlength="500" value={{data.addressTwo}}  required="" id="id_addressTwo">
+        <label for="id_password">Password:</label>
+        <input type="password" name="password" class="form-control" value=""  id="id_password">
+        <button type="submit" class="registerbtn">Submit</button>
+    </form>
+
+</body>
+
+</html>
